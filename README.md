@@ -174,7 +174,27 @@ pydonts
     for set in sets:
         acc.update(set)
     ```
+* Избегай бессмысленных анонимных функций.
 
+  `lambda x: f(x)` эквивалентна `f`.
+
+    ```python
+    # Плохо
+    map(lambda x: frobnicate(x), xs)
+
+    # Лучше
+    map(frobnicate, xs)
+    ```
+
+  `lambda: []` эквивалентна `list`.
+
+    ```python
+    # Плохо
+    collections.defaultdict(lambda: [])
+
+    # Лучше
+    collections.defaultdict(list)
+    ```
 
 Декораторы
 ----------
