@@ -339,3 +339,30 @@ pydonts
      # Лучше
      str(expr)
      expr + other
+
+
+.. _exceptions:
+
+Исключения
+----------
+
+- Минимизируй размер блока ``try``.
+- Чтобы поймать `любое` исключение используй ``except Exception``, а не
+  ``except BaseException`` или просто ``except``.
+- Указывай наиболее специфичный тип исключения в блоке ``except``:
+
+  .. code:: python
+
+     # Плохо
+     try:
+         mapping[key]
+     except Exception:
+         ...
+
+     # Лучше
+     try:
+         mapping[key]
+     except KeyError:
+         ...
+
+- Наследуй собственные исключения от ``Exception``, а не от ``BaseException``.
