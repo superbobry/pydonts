@@ -306,3 +306,36 @@ pydonts
 
      # Лучше
      "(+ {} {})".format(expr1, expr2)
+
+
+.. _classes:
+
+Классы
+------
+
+- Используй ``collections.namedtuple`` для классов с фиксированным набором
+  неизменяемых полей.
+
+  .. code:: python
+
+     # Плохо
+     class Point:
+         def __init__(self, x, y):
+             self.x = x
+             self.y =  y
+
+     # Лучше
+     Point = namedtuple("Point", ["x", "y"])
+
+- Не вызывай "магические методы" напрямую, если для них есть функция или
+  оператор.
+
+  .. code:: python
+
+     # Плохо
+     expr.__str__()
+     expr.__add__(other)
+
+     # Лучше
+     str(expr)
+     expr + other
