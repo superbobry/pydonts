@@ -13,6 +13,25 @@ pydonts
   `flake8`_, который помимо стиля проверит наличие некоторых простых
   ошибок. Плагин для него, проверяющий именование, называется
   `pep8-naming`_.
+- Располагай импортируемые модули в начале файла.
+- Располагай импортируемые модули в лексикографическом порядке.
+
+  .. code:: python
+
+     # Плохо
+     import gzip
+     import sys
+     from collections import defaultdict
+     import io
+     import functools
+
+     # Лучше
+     import functools
+     import gzip
+     import io
+     import sys
+     from collections import defaultdict
+
 - Используй операторы ``is`` и ``is not`` **только** для сравнение с
   синглтонами, например, ``None``. Исключение: булевые значения
   ``True`` и ``False``.
@@ -235,7 +254,7 @@ pydonts
 Строки
 ------
 
-- Используй методы ``str.startswith`` и ``str.endswith``:
+- Используй методы ``str.startswith`` и ``str.endswith``.
 
   .. code:: python
 
@@ -246,3 +265,44 @@ pydonts
      # Лучше
      s.startswith(p)
      s.endswith(p)
+
+- Используй форматирование строк вместо явных вызовов ``str`` и конкатенации.
+
+  .. code:: python
+
+     # Плохо
+     "(+ " + str(expr1) + " " + str(expr2) + ")"
+
+     # Лучше
+     "(+ {} {})".format(expr1, expr2)
+
+  Исключение: приведение к строке одного аргумента.
+
+  .. code:: python
+
+     # Плохо
+     "{}".format(value)
+
+     # Лучше
+     str(value)
+
+- Не усложняй шаблон форматирования без необходимости.
+
+  .. code:: python
+
+     # Плохо
+     "(+ {0} {1})"
+     "(+ {expr1} {expr2})"
+
+     # Лучше
+     "(+ {} {})"
+
+- Помни, что метод ``str.format`` преобразует аргументы в строку.
+
+  .. code:: python
+
+     # Плохо
+     "(+ {} {})".format(str(expr1), str(expr2))
+
+     # Лучше
+     "(+ {} {})".format(expr1, expr2)
