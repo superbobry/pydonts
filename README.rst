@@ -1,6 +1,8 @@
 pydonts
 =======
 
+.. _general:
+
 Общие рекомендации
 ------------------
 
@@ -89,6 +91,8 @@ pydonts
 .. _pep8-naming: https://pypi.python.org/pypi/pep8-naming
 
 
+.. _structure:
+
 Структура кода
 --------------
 
@@ -162,6 +166,8 @@ pydonts
      return any(map(predicate, xs))
 
 
+.. _functions:
+
 Функции
 -------
 
@@ -215,12 +221,16 @@ pydonts
      collections.defaultdict(list)
 
 
+.. _decorators:
+
 Декораторы
 ----------
 
 - **Всегда** используй ``functools.wraps`` или
   ``functools.update_wrapper`` при написании декоратора.
 
+
+.. _strings:
 
 Строки
 ------
