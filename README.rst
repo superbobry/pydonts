@@ -147,6 +147,16 @@ pydonts
      for i, x in enumerate(xs):
          ...
 
+  .. code:: python
+
+     # Плохо
+     for i in range(min(len(xs), len(ys))):
+         f(xs[i], ys[i])
+
+     # Лучше
+     for x, y in zip(xs, ys):
+         f(x, y)
+
 - Не пиши бессмысленных операторов ``if`` и тернарных операторов.
 
   .. code:: python
@@ -349,7 +359,7 @@ pydonts
 - Минимизируй размер блока ``try``.
 - Чтобы поймать `любое` исключение используй ``except Exception``, а не
   ``except BaseException`` или просто ``except``.
-- Указывай наиболее специфичный тип исключения в блоке ``except``:
+- Указывай наиболее специфичный тип исключения в блоке ``except``.
 
   .. code:: python
 
@@ -366,3 +376,17 @@ pydonts
          ...
 
 - Наследуй собственные исключения от ``Exception``, а не от ``BaseException``.
+- Используй менеджеры контекста вместо ``try-finally``.
+
+  .. code:: python
+
+     # Плохо
+     handle = open("path/to/file")
+     try:
+         do_something(handle)
+     finally:
+         handle.close()
+
+     # Лучше
+     with open("path/to/file") as handle:
+         do_something(handle)
