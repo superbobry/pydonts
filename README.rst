@@ -26,6 +26,7 @@ pydonts
      from collections import defaultdict
      import io
      import functools
+     from urllib.request import urlopen 
 
      # Лучше
      import functools
@@ -33,6 +34,7 @@ pydonts
      import io
      import sys
      from collections import defaultdict
+     from urllib.request import urlopen
 
 - Используй операторы ``is`` и ``is not`` **только** для сравнение с
   синглтонами, например, ``None``. Исключение: булевые значения
