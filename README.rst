@@ -34,6 +34,7 @@ pydonts
      import io
      import sys
      from collections import defaultdict
+     from contextlib import contextmanager
      from urllib.request import urlopen
 
 - Используй операторы ``is`` и ``is not`` **только** для сравнение с
