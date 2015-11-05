@@ -25,6 +25,7 @@ pydonts
      import sys
      from collections import defaultdict
      import io
+     from contextlib import contextmanager
      import functools
      from urllib.request import urlopen 
 
