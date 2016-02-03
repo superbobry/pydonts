@@ -338,7 +338,7 @@ pydonts
      class Point:
          def __init__(self, x, y):
              self.x = x
-             self.y =  y
+             self.y = y
 
      # Лучше
      Point = namedtuple("Point", ["x", "y"])
