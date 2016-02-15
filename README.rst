@@ -15,6 +15,7 @@ pydonts
   `flake8`_, который помимо стиля проверит наличие некоторых простых
   ошибок. Плагин для него, проверяющий именование, называется
   `pep8-naming`_.
+
 - Располагай импортируемые модули в начале файла.
 - Располагай импортируемые модули в лексикографическом порядке.
 
@@ -27,7 +28,7 @@ pydonts
      import io
      from contextlib import contextmanager
      import functools
-     from urllib.request import urlopen 
+     from urllib.request import urlopen
 
      # Лучше
      import functools
@@ -62,6 +63,9 @@ pydonts
      # Допустимо
      if acc == 0:
          # ...
+
+- Не называй переменные именами коллекций. Почти всегда можно подобрать более
+  уместное имя.
 
 - Не копируй без необходимости.
 
@@ -162,6 +166,36 @@ pydonts
      # Лучше
      for x, y in zip(xs, ys):
          f(x, y)
+
+- Не используй ``dict.keys`` для итерации по словарю.
+
+  .. code:: python
+
+     # Плохо
+     for key in dict.keys():
+         ...
+
+     # Лучше
+     for key in dict:
+         ...
+
+- Не используй методы ``file.readline`` и ``file.readlines`` для итерации по
+  файлу.
+
+  .. code:: python
+
+     # Плохо
+     while True:
+         line = file.readline()
+         ...
+
+     for line in file.readlines():
+         ...
+
+
+     # Лучше
+     for line in file:
+         ...
 
 - Не пиши бессмысленных операторов ``if`` и тернарных операторов.
 
@@ -356,6 +390,17 @@ pydonts
      str(expr)
      expr + other
 
+- Не используй ``type`` для проверки того, что объект --- экземпляр некоторого
+  класса. Для этого больше подходит функция ``isinstance``.
+
+  .. code:: python
+
+     # Плохо
+     type(instance) == Point
+     type(instance) is Point
+
+     # Лучше
+     isinstance(instance, Point)
 
 .. _exceptions:
 
